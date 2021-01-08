@@ -10,12 +10,20 @@
  limitations under the License.
 */
 
-package main
+package command
 
 import (
-	"github.com/WolvenKit/gpm/cmd"
+	"fmt"
+	"github.com/spf13/cobra"
 )
 
-func main() {
-	cmd.Execute()
+// TODO - Dynamic version for gpm
+var VERSION = "0.0.0"
+
+var versionCmd = &cobra.Command{
+	Use:   "version",
+	Short: "Print the version",
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(VERSION)
+	},
 }

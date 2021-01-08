@@ -10,7 +10,32 @@
  limitations under the License.
 */
 
-package game
+package log
 
+import (
+	"github.com/spf13/viper"
+	"go.uber.org/zap"
+)
 
+var logger *zap.Logger
 
+func init() {
+	development := viper.GetBool("development")
+	if development {
+		logger, _ = zap.NewDevelopment()
+	} else {
+		logger, _ = zap.NewProduction()
+	}
+}
+
+func GetLogger() *zap.SugaredLogger {
+	sugar := logger.Sugar()
+	return sugar
+}
+
+func Flush() {
+	err := logger.Sync()
+	if err != nil {
+		panic(err)
+	}
+}

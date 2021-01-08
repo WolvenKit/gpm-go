@@ -10,20 +10,21 @@
  limitations under the License.
 */
 
-package cmd
+package command
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 )
 
-// TODO - Dynamic version for gpm
-var VERSION = "0.0.0"
-
-var versionCmd = &cobra.Command{
-	Use:   "version",
-	Short: "Print the version",
+var installCmd = &cobra.Command{
+	Use:   "install [IDENTIFIER]",
+	Short: "Install the specified mod",
+	Args:  cobra.MinimumNArgs(3),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println(VERSION)
+		InstallMod(args[0])
 	},
+}
+
+func InstallMod(identifier string) {
+	// Todo: Get mod data from gpm data file using the identifier
 }

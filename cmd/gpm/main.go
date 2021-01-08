@@ -10,14 +10,12 @@
  limitations under the License.
 */
 
-package cmd
+package main
 
-import "github.com/spf13/cobra"
+import (
+	"github.com/WolvenKit/gpm/internal/command"
+)
 
-var describeCmd = &cobra.Command{
-	Use:   "describe",
-	Short: "Describe the specified mod",
-	Run: func(cmd *cobra.Command, args []string) {
-		//DescribeMod("","","","")
-	},
+func main() {
+	command.Execute()
 }

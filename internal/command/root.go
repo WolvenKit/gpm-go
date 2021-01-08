@@ -10,7 +10,7 @@
  limitations under the License.
 */
 
-package cmd
+package command
 
 import (
 	"fmt"
@@ -59,6 +59,7 @@ func init() {
 	rootCmd.AddCommand(installCmd)
 	rootCmd.AddCommand(describeCmd)
 	rootCmd.AddCommand(configCmd)
+	rootCmd.AddCommand(completionCmd)
 }
 
 func initConfig() {
